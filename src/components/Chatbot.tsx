@@ -18,7 +18,7 @@ type Message = {
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [screen, setScreen] = useState<'intro' | 'form' | 'chat'>('intro');
+  const [screen, setScreen] = useState<'intro' | 'chat'>('chat');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [input, setInput] = useState('');
@@ -164,6 +164,12 @@ const Chatbot = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, typingMessage]);
+
+  useEffect(() => {
+  if (isOpen) {
+    setScreen("intro");
+  }
+}, [isOpen]);
 
   return (
     <>
@@ -415,7 +421,7 @@ const Chatbot = () => {
                     {messages.map((msg, idx) => (
                       <div key={idx} style={{ display: 'flex', justifyContent: msg.type === 'user' ? 'flex-end' : 'flex-start', marginBottom: '8px' }}>
                         {msg.type === 'bot' && (
-                          <img src="./image.png" alt="Bot" style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
+                          <img src="./image.png"  style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
                         )}
                         <div style={{
                           maxWidth: '75%',
@@ -424,7 +430,7 @@ const Chatbot = () => {
                           paddingRight: '13px',
                           borderRadius: '15px',
                           color: msg.type === 'user' ? 'white' : 'black',
-                          background: msg.type === 'user' ? 'rgba(17, 17, 17, 1)' : '#f1f1f1',
+                          background: msg.type === 'user' ? 'linear-gradient(135deg, #848484ff, #000000ff)' : '#f1f1f1',
                           fontSize: "14px"
                         }}>
                           <ReactMarkdown>{msg.text}</ReactMarkdown>
@@ -433,7 +439,7 @@ const Chatbot = () => {
                     ))}
                     {typingMessage && (
                       <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '8px' }}>
-                        <img src="./logo.jpg" alt="Bot" style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: 'green' }} />
+                        <img src="./image.png"  style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
                         <div className="typing-indicator">
                           <div className="typing-dot"></div>
                           <div className="typing-dot"></div>
@@ -525,18 +531,10 @@ const Chatbot = () => {
                     }}
                     onClick={() => {
                       if (item.screenName === 'chat') {
-                        const storedName = sessionStorage.getItem("chat_name");
-                        const storedEmail = sessionStorage.getItem("chat_email");
-                        if (storedName && storedEmail) {
-                          setScreen('chat');
-                        } else {
-                          setScreen('form');
-                        }
+                        setScreen('chat');
                       } else if (item.screenName) {
                         setScreen(item.screenName);
                       }
-
-                      if (item.action) item.action();
                     }}
 
                   >
