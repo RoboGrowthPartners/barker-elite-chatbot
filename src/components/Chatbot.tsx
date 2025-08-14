@@ -217,6 +217,7 @@ const Chatbot = () => {
               display: 'flex',
               flexDirection: 'column',
               borderRadius: "30px",
+              background: 'transparent',
               overflow: "hidden",
               transition: 'width 0.3s ease, height 0.3s ease',
             }}
