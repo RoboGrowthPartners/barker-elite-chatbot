@@ -190,7 +190,7 @@ const Chatbot = () => {
             border: "none",
             color: 'white',
             boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-            zIndex: 9999
+            zIndex: "10000"
           }}
         >
           {isOpen ? <FaChevronDown size={22} /> : (<><FiMessageCircle size={22} /><span>Need Help</span></>)}
@@ -205,7 +205,7 @@ const Chatbot = () => {
               position: 'fixed',
               bottom: '80px',
               right: '20px',
-              zIndex: 10000,
+              zIndex: "10000",
 
             }}
           >
@@ -220,7 +220,8 @@ const Chatbot = () => {
                 overflow: "hidden",
                 border: "none",
                 transition: 'width 0.3s ease, height 0.3s ease',
-                boxShadow:"0 0 5px #8787879c"
+                boxShadow:"0 0 5px #8787879c",
+                zIndex:"10000"
               }}
             >
 
@@ -247,6 +248,7 @@ const Chatbot = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'stretch',
+                  zIndex: "10000"
                 }}
               >
                 {/* Top Image */}
