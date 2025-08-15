@@ -179,7 +179,7 @@ const Chatbot = () => {
             position: 'fixed',
             bottom: '20px',
             right: '20px',
-            width: isOpen ? '50px' : '180px',
+            width: isOpen ? '50px' : '50px',
             height: '50px',
             borderRadius: isOpen ? '50%' : '25px',
             display: 'flex',
@@ -190,10 +190,10 @@ const Chatbot = () => {
             border: "none",
             color: 'white',
             boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-            zIndex: "10000"
+            zIndex: "100000000"
           }}
         >
-          {isOpen ? <FaChevronDown size={22} /> : (<><FiMessageCircle size={22} /><span>Need Help</span></>)}
+          {isOpen ? <FaChevronDown size={22} /> : <FiMessageCircle size={22} />}
         </Button>
 
         {isOpen && (
