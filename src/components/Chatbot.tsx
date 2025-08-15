@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaArrowAltCircleUp, FaChevronDown, FaHome, FaEnvelope } from "react-icons/fa";
 import { FiMessageCircle } from 'react-icons/fi';
-import { Button, Form, Card,Container } from 'react-bootstrap';
+import { Button, Form, Card, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactMarkdown from 'react-markdown';
 import { motion } from "framer-motion";
@@ -164,393 +164,394 @@ const Chatbot = () => {
   }, [messages, typingMessage]);
 
   useEffect(() => {
-  if (isOpen) {
-    setScreen("intro");
-  }
-}, [isOpen]);
+    if (isOpen) {
+      setScreen("intro");
+    }
+  }, [isOpen]);
 
   return (
     <>
-     <Container className="" fluid style={{ backgroundColor: "transparent" }}>
-      {/* Floating toggle button */}
-      <Button
-        onClick={() => setIsOpen(!isOpen)}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          width: isOpen ? '50px' : '180px',
-          height: '50px',
-          borderRadius: isOpen ? '50%' : '25px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          background: "linear-gradient(135deg, #848484ff, #000000ff)",
-          border: "none",
-          color: 'white',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-          zIndex: 9999
-        }}
-      >
-        {isOpen ? <FaChevronDown size={22} /> : (<><FiMessageCircle size={22} /><span>Need Help</span></>)}
-      </Button>
-
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+      <Container className="" fluid style={{ backgroundColor: "transparent" }}>
+        {/* Floating toggle button */}
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
           style={{
             position: 'fixed',
-            bottom: '80px',
+            bottom: '20px',
             right: '20px',
-            zIndex: 10000,
-
+            width: isOpen ? '50px' : '180px',
+            height: '50px',
+            borderRadius: isOpen ? '50%' : '25px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            background: "linear-gradient(135deg, #848484ff, #000000ff)",
+            border: "none",
+            color: 'white',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+            zIndex: 9999
           }}
         >
-          <Card
+          {isOpen ? <FaChevronDown size={22} /> : (<><FiMessageCircle size={22} /><span>Need Help</span></>)}
+        </Button>
+
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             style={{
-              width: isExtended ? '600px' : '400px',
-              height: isExtended ? '620px' : '625px',
-              display: 'flex',
-              flexDirection: 'column',
-              borderRadius: "30px",
-              background: 'white',
-              overflow: "hidden",
-              border:"none",
-              transition: 'width 0.3s ease, height 0.3s ease',
+              position: 'fixed',
+              bottom: '80px',
+              right: '20px',
+              zIndex: 10000,
+
             }}
           >
-
-
-
-
-            {/* Modern Header */}
-            {/* Modern Header with Extend Button */}
-            {/* Modern Header with Extend Button */}
-
-            <div
-              className={
-                screen === 'intro' || screen === 'form'
-                  ? isExtended
-                    ? 'curved-rectangle-increase'
-                    : 'curved-rectangle'
-                  : ''
-              }
+            <Card
               style={{
-                background: "linear-gradient(135deg, #848484ff, #000000ff)",
-                padding: '20px',
-                color: 'white',
-                minHeight: "100px",
+                width: isExtended ? '600px' : '400px',
+                height: isExtended ? '650px' : '650px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'stretch',
+                borderRadius: "30px",
+                background: 'white',
+                overflow: "hidden",
+                border: "none",
+                transition: 'width 0.3s ease, height 0.3s ease',
+                boxShadow:"0 0 5px #8787879c"
               }}
             >
-              {/* Top Image */}
-              <div style={{ display: 'flex', marginBottom: '10px' }}>
-                <img
-                  src="./image.png"
-                  style={{
-                    width: "150px",
-                    height: "50px",
-                    // borderRadius: '50%',
-                    objectFit: 'cover',
 
-                  }}
-                />
-               
-                <button
-                  onClick={() => setIsExtended(!isExtended)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    color: 'white',
-                    cursor: 'pointer',
-                    right: "0px",
-                    fontSize: '22px',
-                    // marginLeft: '0%',
-                    marginRight: "10px",
-                    borderRadius: '8px',
-                    transition: 'background-color 0.3s',
-                    position: "absolute"
 
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.27)')}
-                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-                  aria-label={isExtended ? "Shrink Chatbot" : "Extend Chatbot"}
-                  title={isExtended ? "Shrink Chatbot" : "Extend Chatbot"}
-                >
-                  {isExtended ? <HiOutlineArrowsExpand /> : <RiExpandDiagonalLine />}
-                </button>
-              </div>
 
-              {/* Name & Extend Button Row */}
+
+              {/* Modern Header */}
+              {/* Modern Header with Extend Button */}
+              {/* Modern Header with Extend Button */}
+
               <div
+                className={
+                  screen === 'intro' || screen === 'form'
+                    ? isExtended
+                      ? 'curved-rectangle-increase'
+                      : 'curved-rectangle'
+                    : ''
+                }
                 style={{
+                  background: "linear-gradient(135deg, #848484ff, #000000ff)",
+                  padding: '20px',
+                  color: 'white',
+                  minHeight: "110px",
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingTop: "2px"
+                  flexDirection: 'column',
+                  alignItems: 'stretch',
                 }}
               >
-                <div>
-  {screen !== 'chat' && (
-    <>
-      <b>
-        <h4 style={{ margin: 0, fontWeight: 'bold', fontFamily: "" }}>
-          Hi {userName}
-        </h4>
-      </b>
-      <p style={{ margin: 0, fontSize: 14, paddingTop: '5px' }}>
-        I am <b>Reno AI</b> from <b>Barker Elite Remodeling.</b><br />How can we help?
-      </p>
-    </>
-  )}
-</div>
-
-
-
-              </div>
-            </div>
-
-
-
-
-
-            {/* Main Body */}
-            <Card.Body style={{ overflowY: 'auto', flex: 1, padding: '10px' }}>
-
-              {screen === 'intro' && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '15px' }}
-                >
-                  {/* Send a message card */}
-                  <div
+                {/* Top Image */}
+                <div style={{ display: 'flex', marginBottom: '10px' }}>
+                  <img
+                    src="./image.png"
                     style={{
-                      background: 'white',
-                      borderRadius: '10px',
-                      padding: '15px',
-                      marginBottom: '12px',
-                      boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      cursor: 'pointer'
+                      width: "150px",
+                      height: "50px",
+                      // borderRadius: '50%',
+                      objectFit: 'cover',
+
                     }}
-                    onClick={() => handleHelpClick("Send us a message")}
+                  />
+
+                  <button
+                    onClick={() => setIsExtended(!isExtended)}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'white',
+                      cursor: 'pointer',
+                      right: "0px",
+                      fontSize: '22px',
+                      // marginLeft: '0%',
+                      marginRight: "10px",
+                      borderRadius: '8px',
+                      transition: 'background-color 0.3s',
+                      position: "absolute"
+
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.27)')}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                    aria-label={isExtended ? "Shrink Chatbot" : "Extend Chatbot"}
+                    title={isExtended ? "Shrink Chatbot" : "Extend Chatbot"}
                   >
-                    <div>
-                      <strong style={{ fontSize: '15px', color: '#000' }}>Send us a message</strong>
-                      <p style={{ margin: 0, fontSize: '13px', color: '#666' }}>We typically reply within an hour</p>
-                    </div>
-                    <FaChevronRight color="#161616ff" size={16} />
+                    {isExtended ? <HiOutlineArrowsExpand /> : <RiExpandDiagonalLine />}
+                  </button>
+                </div>
+
+                {/* Name & Extend Button Row */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingTop: "2px"
+                  }}
+                >
+                  <div>
+                    {screen !== 'chat' && (
+                      <>
+                        <b>
+                          <h4 style={{ margin: 0, fontWeight: 'bold', fontFamily: "" }}>
+                            Hi {userName}
+                          </h4>
+                        </b>
+                        <p style={{ margin: 0, fontSize: 14, paddingTop: '5px' }}>
+                          I am <b>Reno AI</b> from <b>Barker Elite Remodeling.</b><br />How can we help?
+                        </p>
+                      </>
+                    )}
                   </div>
 
-                  {/* Search for help card */}
-                  <div
-                    style={{
-                      background: 'white',
-                      borderRadius: '10px',
-                      padding: '10px 15px',
-                      boxShadow: '0 2px 20px rgba(0,0,0,0.1)'
-                    }}
+
+
+                </div>
+              </div>
+
+
+
+
+
+              {/* Main Body */}
+              <Card.Body style={{ overflowY: 'auto', flex: 1, padding: '10px' }}>
+
+                {screen === 'intro' && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '15px' }}
                   >
-                    {/* Search title */}
-                    {/* <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', background: "#e7e6e6bb", height: "35px", padding: "20px", borderRadius: "20px", }}>
+                    {/* Send a message card */}
+                    <div
+                      style={{
+                        background: 'white',
+                        borderRadius: '10px',
+                        padding: '15px',
+                        marginBottom: '12px',
+                        boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        cursor: 'pointer'
+                      }}
+                      onClick={() => handleHelpClick("Send us a message")}
+                    >
+                      <div>
+                        <strong style={{ fontSize: '15px', color: '#000' }}>Send us a message</strong>
+                        <p style={{ margin: 0, fontSize: '13px', color: '#666' }}>We typically reply within an hour</p>
+                      </div>
+                      <FaChevronRight color="#161616ff" size={16} />
+                    </div>
+
+                    {/* Search for help card */}
+                    <div
+                      style={{
+                        background: 'white',
+                        borderRadius: '10px',
+                        padding: '10px 15px',
+                        boxShadow: '0 2px 20px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      {/* Search title */}
+                      {/* <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', background: "#e7e6e6bb", height: "35px", padding: "20px", borderRadius: "20px", }}>
                       <strong style={{ flex: 1, fontSize: '15px', color: '#000' }}>Search for help</strong>
                       <FaSearch color="#3484daff" size={14} />
                     </div> */}
 
-                    {/* Help options */}
-                    {helpOptions.map((opt, idx) => (
-                      <div
-                        key={idx}
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          padding: '14px 15px ',
-                          borderBottom: idx < helpOptions.length - 1 ? '1px solid #eee' : 'none',
-                          cursor: 'pointer',
+                      {/* Help options */}
+                      {helpOptions.map((opt, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            padding: '14px 15px ',
+                            borderBottom: idx < helpOptions.length - 1 ? '1px solid #eee' : 'none',
+                            cursor: 'pointer',
 
-                        }}
-                        onClick={() => handleHelpClick(opt)}
-                      >
-                        <span style={{ color: '#000', fontSize: '14px' }}>{opt}</span>
-                        <FaChevronRight color="#ccc" size={14} />
-                      </div>
-                    ))}
-                  </div>
-                  <br />
-                </motion.div>
-              )}
-
-
-              {screen === 'form' && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} style={{ textAlign: 'left' }}>
-                  <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                    {/* <img src="./logo.jpg" alt="Form" style={{ width: '60px', height: '60px', borderRadius: "50%", marginBottom: '15px', backgroundColor: "green" }} /> */}
+                          }}
+                          onClick={() => handleHelpClick(opt)}
+                        >
+                          <span style={{ color: '#000', fontSize: '14px' }}>{opt}</span>
+                          <FaChevronRight color="#ccc" size={14} />
+                        </div>
+                      ))}
+                    </div>
                     <br />
-                    <h5 style={{ color: '#333', marginBottom: '10px' }}>Welcome!</h5>
-                    <p style={{ color: '#666', fontSize: '14px' }}>Please share your details so I can assist you better.</p>
-                  </div>
-                  <Form style={{ maxWidth: '300px', margin: 'auto' }}>
-                    <Form.Label style={{ fontWeight: '500', color: '#333' }}>Name</Form.Label>
-
-                    <Form.Group className="mb-3">
-                      <Form.Control type="text" required placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} className='name-email-field' />
-                    </Form.Group>
-                    <Form.Label style={{ fontWeight: '500', color: '#333' }}>Email</Form.Label>
-
-                    <Form.Group className="mb-3">
-                      <Form.Control type="email" required placeholder="Your Email" value={email} className='name-email-field' onChange={(e) => setEmail(e.target.value)} />
-                    </Form.Group>
-                    <center><Button className='chatbot-startbutton' onClick={handleFormSubmit}>Start Chatting</Button></center>
-                  </Form>
-                </motion.div>
-              )}
-
-              {screen === 'chat' && (
-
-                <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                  <div style={{ flex: 1, overflowY: 'auto', paddingBottom: '10px' }}>
-                    {messages.map((msg, idx) => (
-                      <div key={idx} style={{ display: 'flex', justifyContent: msg.type === 'user' ? 'flex-end' : 'flex-start', marginBottom: '8px' }}>
-                        {msg.type === 'bot' && (
-                          <img src="./image.png"  style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
-                        )}
-                        <div style={{
-                          maxWidth: '75%',
-                          paddingLeft: '13px',
-                          paddingTop: '14px',
-                          paddingRight: '13px',
-                          borderRadius: '15px',
-                          color: msg.type === 'user' ? 'white' : 'black',
-                          background: msg.type === 'user' ? 'linear-gradient(135deg, #848484ff, #000000ff)' : '#f1f1f1',
-                          fontSize: "14px"
-                        }}>
-                          <ReactMarkdown>{msg.text}</ReactMarkdown>
-                        </div>
-                      </div>
-                    ))}
-                    {typingMessage && (
-                      <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '8px' }}>
-                        <img src="./image.png"  style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
-                        <div className="typing-indicator">
-                          <div className="typing-dot"></div>
-                          <div className="typing-dot"></div>
-                          <div className="typing-dot"></div>
-                        </div>
-                      </div>
-                    )}
-                    <div ref={messagesEndRef} />
-                  </div>
-
-                  {/* Chat Input */}
-                  <div style={{
-                    display: 'flex',
-                    padding: '8px',
-                    // borderTop: '1px solid #ddd',
-                    boxShadow: "0 -4px 10px -4px #dfdfdf8a",
-                    background: '#fff'
-                  }}>
-                    <input
-                      type="text"
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                      placeholder="Type a message..."
-                      style={{
-                        flex: 1,
-                        padding: '10px',
-                        borderRadius: '20px',
-                        border: '1px solid #ccc',
-                        outline: 'none',
-                        fontSize: '14px'
-                      }}
-                    />
-                    <Button
-                      onClick={sendMessage}
-                      style={{
-                        marginLeft: '8px',
-                        borderRadius: '50%',
-                        background: "linear-gradient(135deg, #848484ff, #000000ff)",
-                        width: '40px',
-                        border: "none",
-                        height: '40px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}
-                    >
-                      <FaArrowAltCircleUp size={20} />
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-
-            </Card.Body>
-
-            <Card.Footer
-              style={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                padding: '10px 0',
-                borderTop: '1px solid #ddd',
-                background: '#f8f9fa',
-                fontFamily: "'Segoe UI', sans-serif",
-                fontWeight: 500,
-                boxShadow: (screen === 'intro' || screen === 'form') ? "0 5px 10px #b3b3b3ff" : "none"
-              }}
-            >
-              {[
-                { icon: FaHome, label: 'Home', screenName: 'intro' },
-                { icon: FaEnvelope, label: 'Messages', screenName: 'chat' },
-                // { icon: FaBookmark, label: 'Book Meeting', screenName: 'appointment' }
-              ].map((item, idx) => {
-                const Icon = item.icon;
-                const isActive = screen === item.screenName;
-
-                return (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ scale: 1 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    style={{
-                      textAlign: 'center',
-                      cursor: 'pointer',
-                      color: isActive ? '#050505ff' : '#555',
-                      padding: '5px 10px',
-                      borderRadius: '8px'
-                    }}
-                    onClick={() => {
-                      if (item.screenName === 'chat') {
-                        setScreen('chat');
-                      } else if (item.screenName) {
-                        setScreen(item.screenName);
-                      }
-                    }}
-
-                  >
-                    <Icon size={22} style={{ transition: 'color 0.3s ease' }} />
-                    <div style={{ fontSize: 12, marginTop: 2 }}>{item.label}</div>
                   </motion.div>
-                );
-              })}
-            </Card.Footer>
+                )}
+
+
+                {screen === 'form' && (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} style={{ textAlign: 'left' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                      {/* <img src="./logo.jpg" alt="Form" style={{ width: '60px', height: '60px', borderRadius: "50%", marginBottom: '15px', backgroundColor: "green" }} /> */}
+                      <br />
+                      <h5 style={{ color: '#333', marginBottom: '10px' }}>Welcome!</h5>
+                      <p style={{ color: '#666', fontSize: '14px' }}>Please share your details so I can assist you better.</p>
+                    </div>
+                    <Form style={{ maxWidth: '300px', margin: 'auto' }}>
+                      <Form.Label style={{ fontWeight: '500', color: '#333' }}>Name</Form.Label>
+
+                      <Form.Group className="mb-3">
+                        <Form.Control type="text" required placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} className='name-email-field' />
+                      </Form.Group>
+                      <Form.Label style={{ fontWeight: '500', color: '#333' }}>Email</Form.Label>
+
+                      <Form.Group className="mb-3">
+                        <Form.Control type="email" required placeholder="Your Email" value={email} className='name-email-field' onChange={(e) => setEmail(e.target.value)} />
+                      </Form.Group>
+                      <center><Button className='chatbot-startbutton' onClick={handleFormSubmit}>Start Chatting</Button></center>
+                    </Form>
+                  </motion.div>
+                )}
+
+                {screen === 'chat' && (
+
+                  <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                    <div style={{ flex: 1, overflowY: 'auto', paddingBottom: '10px' }}>
+                      {messages.map((msg, idx) => (
+                        <div key={idx} style={{ display: 'flex', justifyContent: msg.type === 'user' ? 'flex-end' : 'flex-start', marginBottom: '8px' }}>
+                          {msg.type === 'bot' && (
+                            <img src="./image.png" style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
+                          )}
+                          <div style={{
+                            maxWidth: '75%',
+                            paddingLeft: '13px',
+                            paddingTop: '14px',
+                            paddingRight: '13px',
+                            borderRadius: '15px',
+                            color: msg.type === 'user' ? 'white' : 'black',
+                            background: msg.type === 'user' ? 'linear-gradient(135deg, #848484ff, #000000ff)' : '#f1f1f1',
+                            fontSize: "14px"
+                          }}>
+                            <ReactMarkdown>{msg.text}</ReactMarkdown>
+                          </div>
+                        </div>
+                      ))}
+                      {typingMessage && (
+                        <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '8px' }}>
+                          <img src="./image.png" style={{ width: '28px', height: '28px', marginRight: '8px', borderRadius: '50%', backgroundColor: '#e1e1e1ff' }} />
+                          <div className="typing-indicator">
+                            <div className="typing-dot"></div>
+                            <div className="typing-dot"></div>
+                            <div className="typing-dot"></div>
+                          </div>
+                        </div>
+                      )}
+                      <div ref={messagesEndRef} />
+                    </div>
+
+                    {/* Chat Input */}
+                    <div style={{
+                      display: 'flex',
+                      padding: '8px',
+                      // borderTop: '1px solid #ddd',
+                      boxShadow: "0 -4px 10px -4px #dfdfdf8a",
+                      background: '#fff'
+                    }}>
+                      <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                        placeholder="Type a message..."
+                        style={{
+                          flex: 1,
+                          padding: '10px',
+                          borderRadius: '20px',
+                          border: '1px solid #ccc',
+                          outline: 'none',
+                          fontSize: '14px'
+                        }}
+                      />
+                      <Button
+                        onClick={sendMessage}
+                        style={{
+                          marginLeft: '8px',
+                          borderRadius: '50%',
+                          background: "linear-gradient(135deg, #848484ff, #000000ff)",
+                          width: '40px',
+                          border: "none",
+                          height: '40px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        <FaArrowAltCircleUp size={20} />
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+
+              </Card.Body>
+
+              <Card.Footer
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  padding: '10px 0',
+                  borderTop: '1px solid #ddd',
+                  background: '#f8f9fa',
+                  fontFamily: "'Segoe UI', sans-serif",
+                  fontWeight: 500,
+                  boxShadow: (screen === 'intro' || screen === 'form') ? "0 5px 10px #b3b3b3ff" : "none"
+                }}
+              >
+                {[
+                  { icon: FaHome, label: 'Home', screenName: 'intro' },
+                  { icon: FaEnvelope, label: 'Messages', screenName: 'chat' },
+                  // { icon: FaBookmark, label: 'Book Meeting', screenName: 'appointment' }
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  const isActive = screen === item.screenName;
+
+                  return (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ scale: 1 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      style={{
+                        textAlign: 'center',
+                        cursor: 'pointer',
+                        color: isActive ? '#050505ff' : '#555',
+                        padding: '5px 10px',
+                        borderRadius: '8px'
+                      }}
+                      onClick={() => {
+                        if (item.screenName === 'chat') {
+                          setScreen('chat');
+                        } else if (item.screenName) {
+                          setScreen(item.screenName);
+                        }
+                      }}
+
+                    >
+                      <Icon size={22} style={{ transition: 'color 0.3s ease' }} />
+                      <div style={{ fontSize: 12, marginTop: 2 }}>{item.label}</div>
+                    </motion.div>
+                  );
+                })}
+              </Card.Footer>
 
 
 
-          </Card>
-        </motion.div>
-      )}
+            </Card>
+          </motion.div>
+        )}
       </Container>
     </>
   );
