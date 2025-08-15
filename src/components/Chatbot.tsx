@@ -1,15 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaArrowAltCircleUp, FaChevronDown, FaHome, FaEnvelope } from "react-icons/fa";
 import { FiMessageCircle } from 'react-icons/fi';
-import { Button, Form, Card } from 'react-bootstrap';
+import { Button, Form, Card,Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactMarkdown from 'react-markdown';
 import { motion } from "framer-motion";
-import { FaChevronRight, FaSearch } from 'react-icons/fa';
-import { FaBookmark } from "react-icons/fa";
+import { FaChevronRight } from 'react-icons/fa';
 import { RiExpandDiagonalLine } from "react-icons/ri";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
-
 type Message = {
   type: 'bot' | 'user';
   text: string;
@@ -173,6 +171,7 @@ const Chatbot = () => {
 
   return (
     <>
+     <Container className="" fluid style={{ backgroundColor: "transparent" }}>
       {/* Floating toggle button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
@@ -213,12 +212,13 @@ const Chatbot = () => {
           <Card
             style={{
               width: isExtended ? '600px' : '400px',
-              height: isExtended ? '650px' : '650px',
+              height: isExtended ? '620px' : '625px',
               display: 'flex',
               flexDirection: 'column',
               borderRadius: "30px",
-              background: 'transparent',
+              background: 'white',
               overflow: "hidden",
+              border:"none",
               transition: 'width 0.3s ease, height 0.3s ease',
             }}
           >
@@ -242,7 +242,7 @@ const Chatbot = () => {
                 background: "linear-gradient(135deg, #848484ff, #000000ff)",
                 padding: '20px',
                 color: 'white',
-                minHeight: "120px",
+                minHeight: "100px",
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'stretch',
@@ -260,12 +260,7 @@ const Chatbot = () => {
 
                   }}
                 />
-                {/* <h4 style={{
-      paddingTop:"10px",
-      paddingLeft:"35%",
-      fontSize:"16px",
-      fontWeight:"bold"
-    }}> Baker's Elite Remodeling</h4> */}
+               
                 <button
                   onClick={() => setIsExtended(!isExtended)}
                   style={{
@@ -297,19 +292,24 @@ const Chatbot = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  paddingTop: "10px"
+                  paddingTop: "2px"
                 }}
               >
                 <div>
-                  <b>
-                    <h4 style={{ margin: 0, fontWeight: 'bold', fontFamily: "" }}>
-                      Hi {userName}
-                    </h4>
-                  </b>
-                  <p style={{ margin: 0, fontSize: 14, paddingTop: '5px' }}>
-                    I am <b>Reno AI</b> from <b>Barker Elite Remodeling.</b><br></br>How can we help?
-                  </p>
-                </div>
+  {screen !== 'chat' && (
+    <>
+      <b>
+        <h4 style={{ margin: 0, fontWeight: 'bold', fontFamily: "" }}>
+          Hi {userName}
+        </h4>
+      </b>
+      <p style={{ margin: 0, fontSize: 14, paddingTop: '5px' }}>
+        I am <b>Reno AI</b> from <b>Barker Elite Remodeling.</b><br />How can we help?
+      </p>
+    </>
+  )}
+</div>
+
 
 
               </div>
@@ -551,6 +551,7 @@ const Chatbot = () => {
           </Card>
         </motion.div>
       )}
+      </Container>
     </>
   );
 };
